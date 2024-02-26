@@ -1,0 +1,24 @@
+name="Welcome to python training";
+print("in operator example");
+print(name);
+print("o" in name);
+print("W" in name);
+print("w" in name);
+print("python" in name);
+print("is operator example");
+a=500;
+b=500;
+c=500;
+print("a ",a);
+print("b",b);
+print("c",c);
+print(id(a));
+print(id(b));
+print(id(c));
+print(id(500));
+print(a is b);
+print(a is c);
+a=600;
+print("a ",a);
+print(id(a));
+
