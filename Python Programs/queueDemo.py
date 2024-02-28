@@ -1,0 +1,14 @@
+from queue import Queue;
+q = Queue();
+print(q.empty());
+q.put(100);
+q.put(200);
+q.put(300);
+q.put(400);
+print(q);
+print(q.qsize());
+first_element = q.get();
+print(first_element);
+#print(dir(q));
+print(q.empty());
+print(q.qsize());
