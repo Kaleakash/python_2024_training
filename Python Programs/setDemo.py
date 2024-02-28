@@ -12,3 +12,7 @@ set2.remove(222);   # if element present it remove that element else generate er
 print(set2);
 set2.discard(2222); # if element present it remove else no error generate 
 print(set2);
+
+
+
+
