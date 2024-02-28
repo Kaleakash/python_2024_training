@@ -1,4 +1,4 @@
-dict1  = {};
+'''dict1  = {};
 dict2=dict();
 print(dict1);
 print(dict2);
@@ -16,7 +16,26 @@ for value in std_dict.values():
     print(value);
 for data in std_dict.items():
     print(data);
-print(dir(std_dict));
+print(dir(std_dict));'''
+my_dict1 = {"100":"Steven"};
+my_dict2=my_dict1;
+my_dict3=my_dict1.copy();
+print(my_dict1);
+print(my_dict2);
+my_dict1["100"]="Akash";
+print(my_dict1);
+print(my_dict2);
+print(my_dict3);
+
+
+
+
+
+
+
+
+
+
 
     
     
