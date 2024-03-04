@@ -18,35 +18,41 @@ def connect_db():
 connect_db();
 
 con2="yes";
-def customer_info():
+def customer_info(emailid):
     global con2;
+    global temp_account;
+    cursor.execute("select * from account where emailid=%s",[emailid]);
+    print("Account number in customer info function");
+    #print(cursor.fetchone());  
+    temp_account= cursor.fetchone()[0];
+    print("your account number is ",temp_account) 
     while con2=="yes":     
-        print("1:Create Account 2 : Check Balance, 3 :Withdraw 4:Deposite");   
+        print("2 : Check Balance, 3 :Withdraw 4:Deposite");   
         choice = int(input("Enter your choice")); 
-        if choice==1:
-            accno = int(input("Enter the account number"));
-            name = input("Enter the name");
-            amount = float(input("Enter the amount"));
-            cursor.execute("insert into account values(%s,%s,%s)",(accno,name,amount));
+        # if choice==1:
+        #     accno = int(input("Enter the account number"));
+        #     name = input("Enter the name");
+        #     amount = float(input("Enter the amount"));
+        #     cursor.execute("insert into account values(%s,%s,%s)",(accno,name,amount));
         
-            if cursor.rowcount > 0:
-                print("account created successfully");
-            else :
-                print("Account didn't create");
-            con.commit();
+        #     if cursor.rowcount > 0:
+        #         print("account created successfully");
+        #     else :
+        #         print("Account didn't create");
+        #     con.commit();
         
         if choice==2:
-            accno = int(input("Enter the account number"));
-            cursor.execute("select * from account where accno=%s",[accno]);
+            #accno = int(input("Enter the account number"));
+            cursor.execute("select * from account where accno=%s",[temp_account]);
             if cursor.statusmessage=='SELECT 1':
-                print(cursor.fetchone());
+                 print(cursor.fetchone());
             else:
                 print("Invalid accno");    
             
         if choice==3:
-            accno = int(input("Enter the account number"));
+            #accno = int(input("Enter the account number"));
             amount = float(input("Enter the amount"));
-            cursor.execute("update account set amount = amount - %s where accno=%s",(amount,accno));
+            cursor.execute("update account set amount = amount - %s where accno=%s",(amount,temp_account));
         
             if cursor.rowcount > 0:
                 print("amount withdrawn successfully");
@@ -55,9 +61,9 @@ def customer_info():
             con.commit();
             
         if choice==4:
-            accno = int(input("Enter the account number"));
+            #accno = int(input("Enter the account number"));
             amount = float(input("Enter the amount"));
-            cursor.execute("update account set amount = amount + %s where accno=%s",(amount,accno));
+            cursor.execute("update account set amount = amount + %s where accno=%s",(amount,temp_account));
         
             if cursor.rowcount > 0:
                 print("amount deposite successfully");
@@ -88,7 +94,8 @@ while con1 == "yes":
             if typeofuser=="manager":
                 manager_info();
             else:
-                customer_info();
+                #print(cursor.fetchone()[0])
+                customer_info(cursor.fetchone()[0]);
         else:
             print("Failure try once again")
     if choice ==2:
@@ -99,10 +106,14 @@ while con1 == "yes":
         
         if cursor.rowcount > 0:
             print("Account created succesfully");
+            if typeofuser=="customer":
+                camount = 1000; 
+                cursor.execute("insert into account(emailid,amount) values(%s,%s)",(emailid,camount));
         else:
             print("Emailid must be unique");
         
-            con.commit();
+    
+    con.commit();
     con1 = input("do you want to continue(yes/no)");
     
     
