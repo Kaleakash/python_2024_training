@@ -1,0 +1,19 @@
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'styles.css' %}"></link>
+    </head>
+
+    <body>
+        {% include "course/header.html" %}
+ 
+        {% block  contents%}
+
+        
+        {% endblock  %}
+
+
+
+        {% include "course/footer.html" %}
+    </body>
+</html>

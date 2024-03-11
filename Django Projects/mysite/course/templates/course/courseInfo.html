@@ -1,0 +1,31 @@
+{% extends "course/base.html" %}
+
+
+{% block  contents%}
+
+        <h2>{{name}}</h2>
+        <h4>Course Info </h4>
+        <p>{{course_data}}</p>
+        <p>CI id {{course_data.cid}} Name is {{course_data.cname}}</p>
+        <h5>All number are </h5>
+        {{number}}
+        <h5>All number one by one</h5>
+
+        {% for n in number%}
+            <p>{{n}}</p>
+        {% endfor %}
+        <h3>All Course Details </h3>
+        <table border="1">
+                <tr>
+                    <th>CId</th>
+                    <th>CName</th>
+                </tr>
+                {% for course in course_info%}
+                <tr>
+                    <td>{{course.cid}}</td>
+                    <td>{{course.cname}}</td>
+                </tr>
+                {% endfor %}
+        </table>
+
+        {% endblock  %}

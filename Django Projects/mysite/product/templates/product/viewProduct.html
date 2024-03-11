@@ -1,0 +1,13 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h2>View Product</h2>
+        <ul>
+        {% for product in products  %}
+        <li> PId {{product.id}}  PName {{product.p_name}} Price {{product.p_price}}</li>
+        {% endfor %}
+        </ul>
+    </body>
+</html>
